@@ -17,12 +17,11 @@ const DiaryEditor = ()=> {
     };
 
     const handleSubmit = () => {
-        alert("저장 성공");
     };
 
     return( 
     <div className="DiaryEditor">
-        <h2>오늘의 일기</h2>
+        <h2>Diary of Today</h2>
         <div>
             <input 
                 name="author"
@@ -51,7 +50,7 @@ const DiaryEditor = ()=> {
             </select>
         </div>
         <div>
-            <button onClick={handleSubmit}>일기 저장하기</button>
+            <button onClick={handleSubmit}>Save</button>
         </div>    
     </div>
     );
