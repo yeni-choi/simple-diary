@@ -25,6 +25,7 @@ const DiaryItem = ({
         >
           Delete
         </button>
+        <button>Edit</button>
       </div>
     );
   };
