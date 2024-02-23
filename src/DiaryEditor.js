@@ -1,4 +1,4 @@
-import  {useState } from "react";
+import  { useRef, useState } from "react";
 
 
 const DiaryEditor = ()=> {
@@ -17,6 +17,17 @@ const DiaryEditor = ()=> {
     };
 
     const handleSubmit = () => {
+        if(state.author.length <1){
+            alert("Please enter at least 1 character in author");
+            return; 
+        }
+
+        if(state.content.length <5){
+            alert("Please enter at least 5 character in content");
+            return;    
+        }
+
+        alert("submit success!");
     };
 
     return( 
