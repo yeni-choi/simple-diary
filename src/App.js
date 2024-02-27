@@ -3,6 +3,7 @@ import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
 import LifeCycle from "./Lifecycle";
+import OptimizeTest from "./OptimizeTest";
 
 function App() {
   const [data, setData] = useState([]);
@@ -76,6 +77,7 @@ function App() {
   return (
     <div className="App">
       <LifeCycle />
+      <OptimizeTest />
       <DiaryEditor onCreate={onCreate} />
       <div>Total : {data.length}</div>
       <div>Positive Diary Total : {goodCount}</div>
