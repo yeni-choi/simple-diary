@@ -20,7 +20,16 @@ const reducer = (state, action) => {
     case "REMOVE": {
       return state.filter((it) => it.id !== action.targetId);
     }
-
+    case "EDIT": {
+      return state.map((it) =>
+        it.id === action.targetId
+          ? {
+              ...it,
+              content: action.newContent
+            }
+          : it
+      );
+    }
     default:
       return state;
   }
@@ -68,11 +77,11 @@ function App() {
   }, []);
 
   const onEdit = useCallback((targetId, newContent) => {
-    setData((data) =>
-      data.map((it) =>
-        it.id === targetId ? { ...it, content: newContent } : it
-      )
-    );
+    dispatch({
+      type: "EDIT",
+      targetId,
+      newContent
+    });
   }, []);
 
   const getDiaryAnalysis = useMemo(
