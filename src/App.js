@@ -5,7 +5,7 @@ import DiaryList from "./DiaryList";
 import LifeCycle from "./Lifecycle";
 
 function App() {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
   const dataId = useRef(0);
 
