@@ -1,8 +1,12 @@
-import { useCallback, useEffect, useMemo, useRef, useReducer } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useReducer } from "react";
 import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
 import LifeCycle from "./Lifecycle";
+
+export const DiaryStateContext = createContext(null);
+export const DiaryDispatchContext = createContext(null);
+
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -96,6 +100,8 @@ function App() {
   const {goodCount, badCount, goodRatio} = getDiaryAnalysis;
 
   return (
+    <DiaryStateContext.Provider value={data}>
+    <DiaryDispatchContext.Provider value={memoizedDispatch}>
     <div className="App">
       <DiaryEditor onCreate={onCreate} />
       <div>Total : {data.length}</div>
@@ -104,6 +110,8 @@ function App() {
       <div>Positive Diary Ratio : {goodRatio}%</div>
       <DiaryList diaryList={data} onDelete={onDelete} onEdit={onEdit}/>
     </div>
+    </DiaryDispatchContext.Provider>
+    </DiaryStateContext.Provider>
   );
 };
 export default App;
