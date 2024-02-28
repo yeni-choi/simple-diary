@@ -1,11 +1,24 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useReducer } from "react";
 import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
 import LifeCycle from "./Lifecycle";
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "INIT": {
+      return action.data;
+    }
+
+    default:
+      return state;
+  }
+};
+
 function App() {
   // const [data, setData] = useState([]);
+
+  const [data, dispatch]=useReducer(reducer, [])
 
   const dataId = useRef(0);
 
@@ -24,7 +37,7 @@ function App() {
       }
     })
 
-    setData(initData);
+    dispatch({ type: "INIT", data: initData });
 
   };
 
