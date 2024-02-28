@@ -46,12 +46,9 @@ function App() {
     setData((data) => [newItem, ...data]);
   },[]);
 
-  const onDelete = (targetId) => {
-    const newDiaryList = data.filter(
-      (it) => it.id !== targetId
-    );
-    setData(newDiaryList);
-  };
+  const onDelete = useCallback((targetId) => {
+    setData(data =>  data.filter((it) => it.id !== targetId));
+  }, []);
 
   const onEdit = (targetId, newContent) => {
     setData(
