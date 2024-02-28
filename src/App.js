@@ -9,9 +9,15 @@ const reducer = (state, action) => {
     case "INIT": {
       return action.data;
     }
+    case "CREATE": {
+      const created_date = new Date().getTime();
+      const newItem = {
+        ...action.data,
+        created_date
+      };
+      return [newItem, ...state];
+    }
 
-    default:
-      return state;
   }
 };
 
@@ -46,18 +52,12 @@ function App() {
   },[])
 
   const onCreate = useCallback((author, content, emotion) => {
-    const created_date = new Date().getTime();
-    const newItem = {
-      author,
-      content,
-      emotion,
-      created_date,
-      id: dataId.current
-    };
+    dispatch({
+      type: "CREATE",
+      data: { author, content, emotion, id: dataId.current }
+    });
     dataId.current += 1;
-
-    setData((data) => [newItem, ...data]);
-  },[]);
+  }, []);
 
   const onDelete = useCallback((targetId) => {
     setData((data) =>  data.filter((it) => it.id !== targetId));
