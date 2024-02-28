@@ -17,10 +17,14 @@ const reducer = (state, action) => {
       };
       return [newItem, ...state];
     }
+    case "REMOVE": {
+      return state.filter((it) => it.id !== action.targetId);
+    }
 
+    default:
+      return state;
   }
 };
-
 function App() {
   // const [data, setData] = useState([]);
 
@@ -60,7 +64,7 @@ function App() {
   }, []);
 
   const onDelete = useCallback((targetId) => {
-    setData((data) =>  data.filter((it) => it.id !== targetId));
+    dispatch({ type: "REMOVE", targetId });
   }, []);
 
   const onEdit = useCallback((targetId, newContent) => {
