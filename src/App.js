@@ -88,6 +88,10 @@ function App() {
     });
   }, []);
 
+  const memoizedDispatch = useMemo(() => {
+    return { onCreate, onDelete, onEdit };
+  }, []);
+
   const getDiaryAnalysis = useMemo(
     () => {
     const goodCount = data.filter((it)=> it.emotion >=3 ).length;
