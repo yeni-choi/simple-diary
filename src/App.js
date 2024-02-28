@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useReducer } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useReducer, createContext } from "react";
 import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
@@ -108,7 +108,7 @@ function App() {
       <div>Positive Diary Total : {goodCount}</div>
       <div>Negative Diary Total : {badCount}</div>
       <div>Positive Diary Ratio : {goodRatio}%</div>
-      <DiaryList diaryList={data} onDelete={onDelete} onEdit={onEdit}/>
+      <DiaryList onDelete={onDelete} onEdit={onEdit}/>
     </div>
     </DiaryDispatchContext.Provider>
     </DiaryStateContext.Provider>
